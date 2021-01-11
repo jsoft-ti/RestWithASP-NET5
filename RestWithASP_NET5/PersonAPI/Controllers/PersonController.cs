@@ -9,8 +9,9 @@ using Services;
 
 namespace PersonAPI.Controllers
 {
+    [ApiVersion("1")]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class PersonController : ControllerBase
     {
         public IPersonService _personService;
@@ -43,7 +44,7 @@ namespace PersonAPI.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
             _personService.Delete(id);

@@ -33,7 +33,7 @@ namespace PersonAPI
             services.AddControllers();
             var connection = Configuration["MySqlConnection:MySqlConnectionString"];
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
-
+            services.AddApiVersioning();
             services.AddScoped<IPersonService, PersonServiceImplementation>();
             services.AddSwaggerGen(c =>
             {
